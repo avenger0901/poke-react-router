@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header>Hi,search my pokemon here!</header>
+        <header className="header">Hi,search my pokemon here!</header>
           {/* <Link to="/">Go home </Link> */}
             <Route component={Home}/>
             <Route component={Paging}></Route>

@@ -23,7 +23,7 @@ export default class Home extends Component {
         console.log(this.state)
         return (
             <div>
-                <form onSubmit={this.handleSearch}>
+                <form className="form" onSubmit={this.handleSearch}>
                     <input onChange={(e)=> this.setState({
                         searchQuery: e.target.value
                     })}/>
@@ -33,9 +33,11 @@ export default class Home extends Component {
                         this.state.pokemon.map(pokemon => 
                             <div className="image-border">
                                 <p><img className="images" src={ pokemon.url_image } alt="" /></p>
+                                <div className="detail-poke">
                                 <p>name: { pokemon.pokemon}</p>
                                 <p>hp: { pokemon.hp }</p>
                                 <p>ability: { pokemon.ability_1 }</p>
+                                </div>
                             </div>
                         )
                 }
