@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from 'superagent';
 // import Paging from './Paging'
 import './App.css';
+import { Link } from 'react-router-dom'
 
 export default class Home extends Component {
  
@@ -42,14 +43,16 @@ export default class Home extends Component {
                 <div className="pokemon">
                 {
                         this.state.pokemon.map(pokemon => 
-                            <div className="image-border">
-                                <p><img className="images" src={ pokemon.url_image } alt="" /></p>
-                                <div className="detail-poke">
-                                <p>name: { pokemon.pokemon}</p>
-                                <p>hp: { pokemon.hp }</p>
-                                <p>ability: { pokemon.ability_1 }</p>
+                            <Link to={`pokemon/${pokemon.pokemon}`}>
+                                <div className="image-border">
+                                    <p><img className="images" src={ pokemon.url_image } alt="" /></p>
+                                    <div className="detail-poke">
+                                    <p>name: { pokemon.pokemon}</p>
+                                    <p>hp: { pokemon.hp }</p>
+                                    <p>ability: { pokemon.ability_1 }</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         )
                 }
                 </div>  
