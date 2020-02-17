@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import request from 'superagent';
+import Paging from './Paging'
 import './App.css';
-import {Link} from 'react-router-dom';
-
 
 export default class Home extends Component {
  
     state={
         searchQuery:'',
         pokemon:[],
+        totalCount:0,
     }
     handleSearch = async (e) => {
         e.preventDefault();
         const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`)
-        this.setState({pokemon:data.body.results})
+        this.setState({
+            pokemon:data.body.results,
+            totalCount:data.body.count,
+        })
         console.log(data);
     }
     render() {
@@ -28,7 +31,7 @@ export default class Home extends Component {
                 <div className="pokemon">
                 {
                         this.state.pokemon.map(pokemon => 
-                            <div>
+                            <div className="image-border">
                                 <p><img className="images" src={ pokemon.url_image } alt="" /></p>
                                 <p>name: { pokemon.pokemon}</p>
                                 <p>hp: { pokemon.hp }</p>
@@ -36,7 +39,8 @@ export default class Home extends Component {
                             </div>
                         )
                 }
-                </div>    
+                </div>  
+                <Paging totalCount ={this.state.totalCount}/>
             </div>
         )
     }
