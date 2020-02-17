@@ -6,7 +6,6 @@ import {
   Link,
   BrowserRouter as Router, 
 } from 'react-router-dom';
-import Paging from './Paging';
 
 function App() {
   return (
@@ -14,8 +13,7 @@ function App() {
       <div className="App">
         <header className="header">Hi,search my pokemon here!</header>
           {/* <Link to="/">Go home </Link> */}
-            <Route component={Home}/>
-            <Route component={Paging}></Route>
+            <Route exact path = "/:pokemon?" component={Home}/>
 
     </div>
     </Router>

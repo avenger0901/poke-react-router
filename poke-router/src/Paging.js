@@ -20,10 +20,10 @@ updatePage(increment) {
     }
 updateControls() {
     const queryString = window.location.hash.slice(1);
-    const searchParams = new URLSearchParams(queryString);
+    const searchQuery = new URLSearchParams(queryString);
     let pageToUse = this.state.page;
 
-    const parsedPage = Number(searchParams.get("page"));
+    const parsedPage = Number(searchQuery.get("page"));
     if (isNaN(parsedPage)) {
         pageToUse = 1;
     } else {
@@ -39,9 +39,9 @@ render() {
     const { totalCount } = this.props;
     console.log(this.props);
     const queryString = window.location.hash.slice(1);
-    const searchParams = new URLSearchParams(queryString);
+    const searchQuery = new URLSearchParams(queryString);
 
-    const parsedPage = parseInt(searchParams.get("page"));
+    const parsedPage = parseInt(searchQuery.get("page"));
 
     let pageToUse;
     if (isNaN(parsedPage)) {
@@ -61,7 +61,7 @@ render() {
         <button
           className="prev"
           onClick={() => this.updatePage(-1)}
-          disabled={pageToUse === 1 ? "true" : ""}
+          disabled={pageToUse === 1 ? true : ""}
           type="button"
         >
           ◀
@@ -73,7 +73,7 @@ render() {
         </span>
         <button
           className="next"
-          disabled={pageToUse === lastPage ? "true" : ""}
+          disabled={pageToUse === lastPage ? true : ""}
           onClick={() => this.updatePage(1)}
           type="button"
         >
