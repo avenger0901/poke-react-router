@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import request from 'superagent';
+import './App.css';
 import {Link} from 'react-router-dom';
 
 
@@ -24,11 +25,11 @@ export default class Home extends Component {
                         searchQuery: e.target.value
                     })}/>
                 </form>
-                <div>
+                <div className="pokemon">
                 {
                         this.state.pokemon.map(pokemon => 
                             <div>
-                                <p><img src={ pokemon.url_image } alt="" /></p>
+                                <p><img className="images" src={ pokemon.url_image } alt="" /></p>
                                 <p>name: { pokemon.pokemon}</p>
                                 <p>hp: { pokemon.hp }</p>
                                 <p>ability: { pokemon.ability_1 }</p>
